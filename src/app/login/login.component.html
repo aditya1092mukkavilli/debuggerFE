@@ -2,15 +2,15 @@
 <div id="loginform">
     <br>
     <br>
-    <div class="wrapper col-lg-4 col-md-6 col-sm-8 col-xs-12">
+    <div class="wrapper col-lg-4 col-md-5 col-sm-8 col-xs-12">
       <div class="text-center"><img class="logoset img-fluid" alt="logo" src="../../assets/logo.png"></div>
-      <form class="form-horizontal">
+      <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="loginUser()">
         <fieldset>  
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="textinput">Username</label>  
           <div class="col-md-12">
-          <input id="textinput" name="textinput" type="text" placeholder="username" class="form-control input-md" required="">
+          <input id="textinput" name="textinput" type="text" placeholder="username" class="form-control input-md" formControlName="username" required="">
             
           </div>
         </div>
@@ -19,7 +19,7 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="password">Password</label>
         <div class="col-md-12">
-          <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="">
+          <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" formControlName="password" required="">
           
         </div>
       </div>
@@ -28,7 +28,7 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="login"></label>
         <div class="col-md-4">
-          <button id="login" name="login" class="btn btn-primary">login</button>
+          <button type="submit" id="login" name="login" class="btn btn-primary">login</button>
         </div>
       </div>
       
