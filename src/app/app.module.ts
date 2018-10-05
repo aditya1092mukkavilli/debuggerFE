@@ -8,6 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegisterUserService } from './register-user.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { CreateUserModule } from './create-user/create-user.module';
+import { ProjectModule } from './project/project.module';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DashboardModule,
+    CreateUserModule,
+    ProjectModule
   ],
   providers: [RegisterUserService],
   bootstrap: [AppComponent]

@@ -37,6 +37,6 @@ export class RegistrationComponent implements OnInit {
   registerUser()
   {
     this.registrationDetails = this.registerForm.value;
-    this.registerService.registerUser(this.registrationDetails).subscribe(x=>console.log(x));
+    this.registerService.registerUser(this.registrationDetails).subscribe(x=>(this.router.navigate(['/login'])));
   }
 }

@@ -25,7 +25,7 @@ export class RegisterUserService {
 
    registerUser(registerDetails:RegistrationModel):Observable<any>
    {
-     return this.http.post("http://localhost:54088/api/account/register",registerDetails,httpOptions);
+     return this.http.post("http://localhost:54088/api/account/register",registerDetails,httpOptions).pipe(catchError(this.handleError('registerUser')));;
    }
 
    handleError<T> (operation = 'operation', result?: T) {
