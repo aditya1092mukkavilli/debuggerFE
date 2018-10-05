@@ -20,7 +20,7 @@ export class RegistrationComponent implements OnInit {
       this.count = x;
       if(x>0)
       {
-       // this.router.navigate(['/login']);
+       this.router.navigate(['/login']);
       }
     });
    

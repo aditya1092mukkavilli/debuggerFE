@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
 import { RegistrationModel } from './registration/registrationModel';
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   })
 };
 
@@ -14,16 +16,24 @@ const httpOptions = {
 
 export class RegisterUserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }  
 
-  verifyUserCount():Observable<Number>
+   verifyUserCount():any
   {
-     return this.http.get<Number>("http://localhost:54088/api/register/validator",httpOptions);
+     return this.http.get("http://localhost:54088/api/register/validator").pipe(catchError(this.handleError('count')));
   }
 
    registerUser(registerDetails:RegistrationModel):Observable<any>
    {
-     debugger;
      return this.http.post("http://localhost:54088/api/account/register",registerDetails,httpOptions);
    }
+
+   handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.log(error); // log to console instead 
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+ }
 }
